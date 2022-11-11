@@ -1,0 +1,18 @@
+---
+#Default region for deploying Custom Control Tower: Code Pipeline, Step functions, Lambda, SSM parameters, and StackSets
+region: ap-southeast-2
+version: 2021-03-15
+
+# Control Tower Custom Resources (Service Control Policies or CloudFormation)
+resources:
+  # conformance packs
+  - name: ConfigOrganizationConformancePacks
+    resource_file: conformance-packs/organization-conformance-packs.yaml
+    parameter_file: parameters/aws_baseline/organization-conformance-packs.json
+    deploy_method: stack_set
+    deployment_targets:
+      accounts:
+        - <accountNo>
+    regions:
+      - ap-southeast-2
+    

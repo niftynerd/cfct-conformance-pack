@@ -1,0 +1,14 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Deploy AWS Conformance Pack'
+
+Parameters:
+  S3Bucket:
+    Type: String
+
+Resources:
+  NZISM:
+    Type: AWS::Config::OrganizationConformancePack
+    Properties:
+      OrganizationConformancePackName: NZISM
+      TemplateS3Uri: !Sub "s3://${S3Bucket}/Operational-Best-Practices-for-NZISM.yaml"
